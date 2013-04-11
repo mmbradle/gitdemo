@@ -1,0 +1,28 @@
+sourceCompatibility = 1.6
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.8.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+            exclude '**/*Test.java'
+        }
+        output.classesDir = file("$buildDir/classes")
+    }
+    test {
+        java {
+            srcDirs = ['src']
+            include '**/*Test.java'
+        }
+        output.classesDir = file("$buildDir/test-classes")
+    }
+}
